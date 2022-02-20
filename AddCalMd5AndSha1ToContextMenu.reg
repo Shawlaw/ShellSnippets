@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\CalMd5AndSha1]
+
+; The actual-path-to-bat must be changed before you run this
+[HKEY_CLASSES_ROOT\*\shell\CalMd5AndSha1\command]
+@="C:\\actual-path-to-bat\\CalMd5AndSha1ForFile.bat \"%1\""
+
