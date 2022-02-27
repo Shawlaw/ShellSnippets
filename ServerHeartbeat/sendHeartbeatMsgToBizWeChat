@@ -1,0 +1,32 @@
+#!/bin/bash
+
+webHookUrl=""
+
+config="./local.properties"
+IFS=$'\n\n'
+# Use for loop to compat with with and without new line at last in file 
+for line in `cat "$config"`
+do
+  if [[ $line =~ ^\#.+ ]];
+  then
+    echo "Comments: "$line
+    continue
+  fi
+  IFS=" "
+  kv=($line)
+  # Compat with Windows' CRLF line splitter
+  if [[ "${kv[2]: -1}" == $'\r' ]]; then
+    kv[2]="${kv[2]:: -1}"
+  fi
+  if [[ "${kv[0]}" == "webHookUrl" ]]; then
+    webHookUrl="${kv[1]}"
+  fi
+done
+
+sinceTs=$(date +%Y.%m.%d_%H:%M:%S)
+while true
+do
+  msg="$1"
+  ./sendMsgToBizWeChat.sh "$webHookUrl" "$msg"_since_"$sinceTs"
+  sleep $2s
+done

@@ -1,0 +1,5 @@
+# Every line which doesn't start with # is a property
+# Properties pattern is :
+# Name Value
+webHookUrl hereIsYourBizWeChatWebHookUrl
+
