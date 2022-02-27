@@ -1,0 +1,9 @@
+#!/bin/bash
+
+runningProcId=$(ps aux | grep -v grep | grep "sendHeartbeatMsgToBizWeChat" | awk '{print $2}')
+if [ -z $runningProcId ]; then
+    echo "Heartbeat is not running, nothing to do"
+else
+    kill -s TERM $runningProcId
+    echo "Heartbeat stopped"
+fi
