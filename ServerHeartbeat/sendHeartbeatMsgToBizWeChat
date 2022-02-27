@@ -26,7 +26,9 @@ done
 sinceTs=$(date +%Y.%m.%d_%H:%M:%S)
 while true
 do
-  msg="$1"
+  echo "wake up"
+  msg="$1"_at_$(date +%Y.%m.%d_%H:%M:%S)
   ./sendMsgToBizWeChat.sh "$webHookUrl" "$msg"_since_"$sinceTs"
+  echo "sleep $2"s
   sleep $2s
 done
