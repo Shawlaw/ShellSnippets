@@ -3,7 +3,7 @@
 webHookUrl=$1
 msg=$2
 
-curl ''"$webHookUrl"'' \
+curl -s ''"$webHookUrl"'' \
    -H 'Content-Type: application/json' \
    -d '
    {
